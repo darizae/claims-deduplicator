@@ -1,0 +1,846 @@
+[
+  {
+    "dataset_name": "cnndm_test",
+    "record_id": "cnndm_test_0",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Juan Arango escaped punishment.",
+          "Juan Arango escaped punishment from the referee"
+        ],
+        "representative_claim": "Juan Arango escaped punishment from the referee"
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Juan Arango bit Jesus Zavela."
+        ],
+        "representative_claim": "Juan Arango bit Jesus Zavela."
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Arango could face a retrospective punishment.",
+          "Arango could face a retrospective punishment for the incident"
+        ],
+        "representative_claim": "Arango could face a retrospective punishment for the incident"
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Arango had eariler scored a free kick."
+        ],
+        "representative_claim": "Arango had eariler scored a free kick."
+      },
+      {
+        "cluster_id": 4,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Arango scored for his team."
+        ],
+        "representative_claim": "Arango scored for his team."
+      },
+      {
+        "cluster_id": 5,
+        "cluster_size": 3,
+        "cluster_texts": [
+          "Arango had a defeat.",
+          "Arango's team suffered a defeat",
+          "Arango's team suffered a 4-3 defeat"
+        ],
+        "representative_claim": "Arango's team suffered a 4-3 defeat"
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 6,
+      "redundancy_ratio": 1.6666666666666667,
+      "fraction_duplicates": 0.4,
+      "unique_claims_pct": 0.6
+    },
+    "deduplicated_claims": [
+      "Juan Arango escaped punishment from the referee",
+      "Juan Arango bit Jesus Zavela.",
+      "Arango could face a retrospective punishment for the incident",
+      "Arango had eariler scored a free kick.",
+      "Arango scored for his team.",
+      "Arango's team suffered a 4-3 defeat"
+    ],
+    "redundancy_after": {
+      "num_clusters": 6,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "cnndm_test",
+    "record_id": "cnndm_test_1",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Gary Gardner confirms he'll report to Aston Villa.",
+          "Gary Gardner will report to Aston Villa for pre-season training."
+        ],
+        "representative_claim": "Gary Gardner will report to Aston Villa for pre-season training."
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Gary Gardner is 22 years old."
+        ],
+        "representative_claim": "Gary Gardner is 22 years old."
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Gary Gardner is out on loan."
+        ],
+        "representative_claim": "Gary Gardner is out on loan."
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Gary Gardner is out on loan at Nottingham Forest."
+        ],
+        "representative_claim": "Gary Gardner is out on loan at Nottingham Forest."
+      },
+      {
+        "cluster_id": 4,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Gary Gardner is at the Championship side."
+        ],
+        "representative_claim": "Gary Gardner is at the Championship side."
+      },
+      {
+        "cluster_id": 5,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Tim Sherwood is keen to asses Gardner.",
+          "Tim Sherwood is keen to asses Gardner ahead of next season."
+        ],
+        "representative_claim": "Tim Sherwood is keen to asses Gardner ahead of next season."
+      },
+      {
+        "cluster_id": 6,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The midfielder would prefer a move back to Forest."
+        ],
+        "representative_claim": "The midfielder would prefer a move back to Forest."
+      },
+      {
+        "cluster_id": 7,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The midfielder would prefer a move back if Villa doesn't work out."
+        ],
+        "representative_claim": "The midfielder would prefer a move back if Villa doesn't work out."
+      },
+      {
+        "cluster_id": 8,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "CLICK HERE for all the latest Aston Villa news."
+        ],
+        "representative_claim": "CLICK HERE for all the latest Aston Villa news."
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 9,
+      "redundancy_ratio": 1.2222222222222223,
+      "fraction_duplicates": 0.18181818181818182,
+      "unique_claims_pct": 0.8181818181818182
+    },
+    "deduplicated_claims": [
+      "Gary Gardner will report to Aston Villa for pre-season training.",
+      "Gary Gardner is 22 years old.",
+      "Gary Gardner is out on loan.",
+      "Gary Gardner is out on loan at Nottingham Forest.",
+      "Gary Gardner is at the Championship side.",
+      "Tim Sherwood is keen to asses Gardner ahead of next season.",
+      "The midfielder would prefer a move back to Forest.",
+      "The midfielder would prefer a move back if Villa doesn't work out.",
+      "CLICK HERE for all the latest Aston Villa news."
+    ],
+    "redundancy_after": {
+      "num_clusters": 9,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "cnndm_test",
+    "record_id": "cnndm_test_2",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Current federal goverment guidelines dictate the people."
+        ],
+        "representative_claim": "Current federal goverment guidelines dictate the people."
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Current federal government guidelines dictate the people about their salt intake.",
+          "The guidelines dictate the people should limit their salt intake."
+        ],
+        "representative_claim": "Current federal government guidelines dictate the people about their salt intake."
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "People are dictated to limit their salt intake to 2,300 miligrams."
+        ],
+        "representative_claim": "People are dictated to limit their salt intake to 2,300 miligrams."
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Scientists believe a typical healthy person can consume 6,000 miligrams per day.",
+          "Scientists believe a typical healthy person can consume 6,000 miligrams per day without significantly raising health risks."
+        ],
+        "representative_claim": "Scientists believe a typical healthy person can consume 6,000 miligrams per day without significantly raising health risks."
+      },
+      {
+        "cluster_id": 4,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The same skeptics also warn of the health risks."
+        ],
+        "representative_claim": "The same skeptics also warn of the health risks."
+      },
+      {
+        "cluster_id": 5,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The same skeptics warn the health risks associated with consuming less then 3,000 miligrams."
+        ],
+        "representative_claim": "The same skeptics warn the health risks associated with consuming less then 3,000 miligrams."
+      },
+      {
+        "cluster_id": 6,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Average American ingests about 3,500 miligrams of salt per day."
+        ],
+        "representative_claim": "Average American ingests about 3,500 miligrams of salt per day."
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 7,
+      "redundancy_ratio": 1.2857142857142858,
+      "fraction_duplicates": 0.2222222222222222,
+      "unique_claims_pct": 0.7777777777777778
+    },
+    "deduplicated_claims": [
+      "Current federal goverment guidelines dictate the people.",
+      "Current federal government guidelines dictate the people about their salt intake.",
+      "People are dictated to limit their salt intake to 2,300 miligrams.",
+      "Scientists believe a typical healthy person can consume 6,000 miligrams per day without significantly raising health risks.",
+      "The same skeptics also warn of the health risks.",
+      "The same skeptics warn the health risks associated with consuming less then 3,000 miligrams.",
+      "Average American ingests about 3,500 miligrams of salt per day."
+    ],
+    "redundancy_after": {
+      "num_clusters": 7,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "cnndm_validation",
+    "record_id": "cnndm_validation_0",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The spread was shot by photographer Mario Testino."
+        ],
+        "representative_claim": "The spread was shot by photographer Mario Testino."
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The spread stars Gigi Hadid."
+        ],
+        "representative_claim": "The spread stars Gigi Hadid."
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The spread stars Ansel Elgort."
+        ],
+        "representative_claim": "The spread stars Ansel Elgort."
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The spread stars Dylan Penn."
+        ],
+        "representative_claim": "The spread stars Dylan Penn."
+      },
+      {
+        "cluster_id": 4,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The spread stars Hopper."
+        ],
+        "representative_claim": "The spread stars Hopper."
+      },
+      {
+        "cluster_id": 5,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Hopper is Dynal Penn's younger brother."
+        ],
+        "representative_claim": "Hopper is Dynal Penn's younger brother."
+      },
+      {
+        "cluster_id": 6,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Kendall is 19 years old."
+        ],
+        "representative_claim": "Kendall is 19 years old."
+      },
+      {
+        "cluster_id": 7,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The spread is in Vogue."
+        ],
+        "representative_claim": "The spread is in Vogue."
+      },
+      {
+        "cluster_id": 8,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "This is Kendall's fifth time appearing in Vogue."
+        ],
+        "representative_claim": "This is Kendall's fifth time appearing in Vogue."
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 9,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
+    "deduplicated_claims": [
+      "The spread was shot by photographer Mario Testino.",
+      "The spread stars Gigi Hadid.",
+      "The spread stars Ansel Elgort.",
+      "The spread stars Dylan Penn.",
+      "The spread stars Hopper.",
+      "Hopper is Dynal Penn's younger brother.",
+      "Kendall is 19 years old.",
+      "The spread is in Vogue.",
+      "This is Kendall's fifth time appearing in Vogue."
+    ],
+    "redundancy_after": {
+      "num_clusters": 9,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "cnndm_validation",
+    "record_id": "cnndm_validation_1",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Zinedine Zidane said interest in Juventus star Paul Pogba is 'only logical'"
+        ],
+        "representative_claim": "Zinedine Zidane said interest in Juventus star Paul Pogba is 'only logical'"
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 3,
+        "cluster_texts": [
+          "Paul Pogba has seven goals",
+          "Paul Pogba has seven goals this season",
+          "Paul Pogba has seven goals in 22 Serie A appearances"
+        ],
+        "representative_claim": "Paul Pogba has seven goals in 22 Serie A appearances"
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Paul Pogba is 22-year-old"
+        ],
+        "representative_claim": "Paul Pogba is 22-year-old"
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 3,
+        "cluster_texts": [
+          "Pogba has also attracted interest from Manchester United",
+          "Pogba has also attracted interest from Chelsea",
+          "Pogba has also attracted interest from Manchester City"
+        ],
+        "representative_claim": "Pogba has also attracted interest from Manchester United"
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 2.0,
+      "fraction_duplicates": 0.5,
+      "unique_claims_pct": 0.5
+    },
+    "deduplicated_claims": [
+      "Zinedine Zidane said interest in Juventus star Paul Pogba is 'only logical'",
+      "Paul Pogba has seven goals in 22 Serie A appearances",
+      "Paul Pogba is 22-year-old",
+      "Pogba has also attracted interest from Manchester United"
+    ],
+    "redundancy_after": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "cnndm_validation",
+    "record_id": "cnndm_validation_2",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce was at the Emirates."
+        ],
+        "representative_claim": "Jonathan Pearce was at the Emirates."
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce was commentating the Match of the Day ."
+        ],
+        "representative_claim": "Jonathan Pearce was commentating the Match of the Day ."
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce is 55 years old."
+        ],
+        "representative_claim": "Jonathan Pearce is 55 years old."
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce was preparing a piece to camera."
+        ],
+        "representative_claim": "Jonathan Pearce was preparing a piece to camera."
+      },
+      {
+        "cluster_id": 4,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "A sprinkler came on."
+        ],
+        "representative_claim": "A sprinkler came on."
+      },
+      {
+        "cluster_id": 5,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce was soaked."
+        ],
+        "representative_claim": "Jonathan Pearce was soaked."
+      },
+      {
+        "cluster_id": 6,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce ran out of shot."
+        ],
+        "representative_claim": "Jonathan Pearce ran out of shot."
+      },
+      {
+        "cluster_id": 7,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce said 'you could have told us' ."
+        ],
+        "representative_claim": "Jonathan Pearce said 'you could have told us' ."
+      },
+      {
+        "cluster_id": 8,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce took it in good spirits."
+        ],
+        "representative_claim": "Jonathan Pearce took it in good spirits."
+      },
+      {
+        "cluster_id": 9,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Jonathan Pearce later laughed off the incident on air ."
+        ],
+        "representative_claim": "Jonathan Pearce later laughed off the incident on air ."
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 10,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
+    "deduplicated_claims": [
+      "Jonathan Pearce was at the Emirates.",
+      "Jonathan Pearce was commentating the Match of the Day .",
+      "Jonathan Pearce is 55 years old.",
+      "Jonathan Pearce was preparing a piece to camera.",
+      "A sprinkler came on.",
+      "Jonathan Pearce was soaked.",
+      "Jonathan Pearce ran out of shot.",
+      "Jonathan Pearce said 'you could have told us' .",
+      "Jonathan Pearce took it in good spirits.",
+      "Jonathan Pearce later laughed off the incident on air ."
+    ],
+    "redundancy_after": {
+      "num_clusters": 10,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "xsum",
+    "record_id": "xsum_0",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The main suspect in a massacre has gone on trial"
+        ],
+        "representative_claim": "The main suspect in a massacre has gone on trial"
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "The main suspect in the most brutal massacre in recent Philippine history has gone on trial",
+          "The main suspect in the massacre in Philippine has gone on trial"
+        ],
+        "representative_claim": "The main suspect in the most brutal massacre in recent Philippine history has gone on trial"
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 2,
+      "redundancy_ratio": 1.5,
+      "fraction_duplicates": 0.3333333333333333,
+      "unique_claims_pct": 0.6666666666666666
+    },
+    "deduplicated_claims": [
+      "The main suspect in a massacre has gone on trial",
+      "The main suspect in the most brutal massacre in recent Philippine history has gone on trial"
+    ],
+    "redundancy_after": {
+      "num_clusters": 2,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "xsum",
+    "record_id": "xsum_1",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 4,
+        "cluster_texts": [
+          "The government says it will increase the levy",
+          "The government says it will increase the levy on banks",
+          "The government says it will increase the levy from 0.078% to 0.088%",
+          "The government says it will increase the levy from 1 January"
+        ],
+        "representative_claim": "The government says it will increase the levy from 0.078% to 0.088%"
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 1,
+      "redundancy_ratio": 4.0,
+      "fraction_duplicates": 0.75,
+      "unique_claims_pct": 0.25
+    },
+    "deduplicated_claims": [
+      "The government says it will increase the levy from 0.078% to 0.088%"
+    ],
+    "redundancy_after": {
+      "num_clusters": 1,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "xsum",
+    "record_id": "xsum_2",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Footballer Gary Neville had controversial plans have been given the go ahead"
+        ],
+        "representative_claim": "Footballer Gary Neville had controversial plans have been given the go ahead"
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The controversial plans have been given the go ahead"
+        ],
+        "representative_claim": "The controversial plans have been given the go ahead"
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The controversial plans are for an eco-friendly \"Teletubbies\" house"
+        ],
+        "representative_claim": "The controversial plans are for an eco-friendly \"Teletubbies\" house"
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The controversial plans have been given the go ahead by Bolton Council."
+        ],
+        "representative_claim": "The controversial plans have been given the go ahead by Bolton Council."
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
+    "deduplicated_claims": [
+      "Footballer Gary Neville had controversial plans have been given the go ahead",
+      "The controversial plans have been given the go ahead",
+      "The controversial plans are for an eco-friendly \"Teletubbies\" house",
+      "The controversial plans have been given the go ahead by Bolton Council."
+    ],
+    "redundancy_after": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "samsum",
+    "record_id": "samsum_0",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Charlie's sister has passed her last university exam"
+        ],
+        "representative_claim": "Charlie's sister has passed her last university exam"
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Charlie will go out",
+          "Charlie will go out tonight."
+        ],
+        "representative_claim": "Charlie will go out tonight."
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Charlie will go out to celebrate that"
+        ],
+        "representative_claim": "Charlie will go out to celebrate that"
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Frank will go out",
+          "Frank will go out tonight."
+        ],
+        "representative_claim": "Frank will go out tonight."
+      },
+      {
+        "cluster_id": 4,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Frank will go out to celebrate that"
+        ],
+        "representative_claim": "Frank will go out to celebrate that"
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 5,
+      "redundancy_ratio": 1.4,
+      "fraction_duplicates": 0.2857142857142857,
+      "unique_claims_pct": 0.7142857142857143
+    },
+    "deduplicated_claims": [
+      "Charlie's sister has passed her last university exam",
+      "Charlie will go out tonight.",
+      "Charlie will go out to celebrate that",
+      "Frank will go out tonight.",
+      "Frank will go out to celebrate that"
+    ],
+    "redundancy_after": {
+      "num_clusters": 5,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "samsum",
+    "record_id": "samsum_1",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Brett's cousin met his wife while playing a game together"
+        ],
+        "representative_claim": "Brett's cousin met his wife while playing a game together"
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Andrew's favorite game is the Final Fantasy"
+        ],
+        "representative_claim": "Andrew's favorite game is the Final Fantasy"
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Brett hasn't heard about the Final Fantasy"
+        ],
+        "representative_claim": "Brett hasn't heard about the Final Fantasy"
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "John hasn't heard about the Final Fantasy"
+        ],
+        "representative_claim": "John hasn't heard about the Final Fantasy"
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
+    "deduplicated_claims": [
+      "Brett's cousin met his wife while playing a game together",
+      "Andrew's favorite game is the Final Fantasy",
+      "Brett hasn't heard about the Final Fantasy",
+      "John hasn't heard about the Final Fantasy"
+    ],
+    "redundancy_after": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  },
+  {
+    "dataset_name": "samsum",
+    "record_id": "samsum_2",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_size": 2,
+        "cluster_texts": [
+          "Anna got an awful stomachache",
+          "Anna got an awful stomachache at night"
+        ],
+        "representative_claim": "Anna got an awful stomachache at night"
+      },
+      {
+        "cluster_id": 1,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Anna doesn't know its cause."
+        ],
+        "representative_claim": "Anna doesn't know its cause."
+      },
+      {
+        "cluster_id": 2,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "Anna's mom Joanna will make her hot tea"
+        ],
+        "representative_claim": "Anna's mom Joanna will make her hot tea"
+      },
+      {
+        "cluster_id": 3,
+        "cluster_size": 1,
+        "cluster_texts": [
+          "The hot tea will be served with some fresh mint leaves."
+        ],
+        "representative_claim": "The hot tea will be served with some fresh mint leaves."
+      }
+    ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.25,
+      "fraction_duplicates": 0.2,
+      "unique_claims_pct": 0.8
+    },
+    "deduplicated_claims": [
+      "Anna got an awful stomachache at night",
+      "Anna doesn't know its cause.",
+      "Anna's mom Joanna will make her hot tea",
+      "The hot tea will be served with some fresh mint leaves."
+    ],
+    "redundancy_after": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    }
+  }
+]

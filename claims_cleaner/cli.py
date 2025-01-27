@@ -1,6 +1,6 @@
 import argparse
-from .deduplicate import deduplicate_claims
-from .json_handler import deduplicate_json_file
+
+from claims_cleaner import deduplicate_json_file_with_redundancy
 from .strategies import select_longest, select_shortest, select_random
 
 STRATEGY_MAP = {
@@ -28,28 +28,21 @@ def main():
                         help="Strategy for picking a representative claim from each cluster.")
     parser.add_argument("--device", default=None,
                         help="Device to run embeddings on: 'cpu', 'cuda', 'mps', or None (auto).")
+    parser.add_argument("--clusters-output", default=None,
+                        help="Optional path to separate clusters JSON for qualitative analysis.")
 
     args = parser.parse_args()
 
-    def deduplicate_fn(claims):
-        return deduplicate_claims(
-            claims=claims,
-            threshold=args.threshold,
-            representative_selector=STRATEGY_MAP[args.strategy],
-            model_name=args.model_name,
-            device=args.device
-        )
-
-    deduplicate_json_file(
+    deduplicate_json_file_with_redundancy(
         input_json_path=args.input_json,
         output_json_path=args.output_json,
         field_to_deduplicate=args.field_to_deduplicate,
-        deduplicate_fn=deduplicate_fn
+        representative_selector=STRATEGY_MAP[args.strategy],
+        threshold=args.threshold,
+        model_name=args.model_name,
+        device=args.device,
+        separate_clusters_path=args.clusters_output
     )
-
-    print(
-        "Done deduplicating. If you want to measure redundancy, call 'measure_redundancy' in your own script or add "
-        "code here.")
 
 
 if __name__ == "__main__":
