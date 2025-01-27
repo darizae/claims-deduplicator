@@ -1,0 +1,137 @@
+{
+  "cnndm_test": [
+    {
+      "source": "Club Tijuana star Juan Arango conjured memories Luis Suarez in his team's 4-3 defeat by Monterrey in the Mexican league - but it was not through prodigious scoring. The Venezuelan icon Arango sank his teeth into the shoulder of Jesus Zavela as his temper flared in the defeat. He was not booked by the referee but could face a heavy retrospective ban. Juan Arango (left) bites the shoulder of opponent Jesus Zavela in a moment of madness . Zavala holds his shoulder after being bitten by Arango, in the game Zavala's side won 4-3 in Mexico . Zavala shows the referee the mark on his shoulder after being bittern by Arango . Arango (right) earlier scored a magnificent free kick to bring his Club Tijuana team level against Monterrey . Arango had earlier curled in a magnificent free kick for his team to bring them level after falling 2-0 down early on in the encounter. But the 34-year-old overshadowed his goal with the bite as television cameras picked up the moment of madness. Arango spent 10 years playing in Europe, spending five seasons each at Real Mallorca in Spain and Borussia Monchengladbach in Germany. He has made 121 appearances for Venezuela.",
+      "reference": "Juan Arango escaped punishment from the referee for biting Jesus Zavela .\nHe could face a retrospective punishment for the incident .\nArango had earlier scored a free kick in his team's 4-3 defeat .",
+      "reference_acus": [
+        "Juan Arango escaped punishment.",
+        "Juan Arango bit Jesus Zavela.",
+        "Juan Arango escaped punishment from the referee",
+        "Arango could face a retrospective punishment.",
+        "Arango could face a retrospective punishment for the incident",
+        "Arango had eariler scored a free kick.",
+        "Arango scored for his team.",
+        "Arango had a defeat.",
+        "Arango's team suffered a defeat",
+        "Arango's team suffered a 4-3 defeat"
+      ],
+      "system_claims_gpt-3.5-turbo": [
+        "Juan Arango escaped punishment for biting Jesus Zavela.",
+        "He could face retrospective punishment for the incident.",
+        "Arango scored a free kick in his team's 4-3 defeat."
+      ],
+      "system_claims_distilled_t5": [
+        "Juan Arango escaped punishment from the referee for biting Jesus Zavela",
+        "He could face a retrospective punishment for the incident",
+        "Arango had earlier scored a free kick in his team's 4-3 defeat"
+      ],
+      "system_claims_llama3_1b": [
+        "Juan Arango escaped punishment.",
+        "The referee punished Juan Arango for biting Jesus Zavela.",
+        "Biting Jesus Zavela is punishable by punishment.",
+        "Arango could face a retrospective punishment."
+      ],
+      "system_claims_llama2_7b": [],
+      "reference_acus_deduped": [
+        "Juan Arango escaped punishment from the referee",
+        "Juan Arango bit Jesus Zavela.",
+        "Arango could face a retrospective punishment for the incident",
+        "Arango had eariler scored a free kick.",
+        "Arango scored for his team.",
+        "Arango's team suffered a 4-3 defeat"
+      ]
+    },
+    {
+      "source": "Tim Sherwood will welcome Gary Gardner back into his first team squad during pre-season to assess closely whether the 22-year-old can cut it for Aston Villa in the Premier League. Gardner has enjoyed a successful loan spell at Nottingham Forest and scored a superb free-kick in front of the Villa manager during the defeat to Watford at the City Ground. Sherwood is keen to see Gardner, a former England Under-21 player, train day-to-day before making up his mind and he has spoken previously about his desire for homegrown players to make an impact at the club. Gary Gardner (left) will report to Aston Villa for pre-season training to be assessed by Tim Sherwood . The Villa boss has inspired the club since being appointed and helped lead them to an FA Cup final . Gardner, born in Solihull, joined Villa's academy aged seven and last year was rewarded with a new contract that expires in June 2016 despite suffering serious knee injuries. 'I will go back to Villa in the summer and we will see what happens,' he said. 'When I am back there in training, it will be my chance to impress. Tim Sherwood will not have seen much of me in training, because I have not been there. 'Villa are the main club, I have been there since I was seven and it is the team I support. But Forest have been fantastic to me. It is definitely the second team in my heart. 'If I was made available for loan again next season, if it does not work out at Villa, Forest would be top of my list, definitely. It is the best loan move I have had.' Gardner scored a stunning free-kick against Watford with Sherwood in attendance at the City Ground .",
+      "reference": "Gary Gardner confirms he'll report to Aston Villa for pre-season training .\nThe 22-year-old is out on loan at Championship side Nottingham Forest .\nTim Sherwood is keen to asses Gardner ahead of next season .\nThe midfielder would prefer a move back to Forest if Villa doesn't wok out .\nCLICK HERE for all the latest Aston Villa news .",
+      "reference_acus": [
+        "Gary Gardner confirms he'll report to Aston Villa.",
+        "Gary Gardner will report to Aston Villa for pre-season training.",
+        "Gary Gardner is 22 years old.",
+        "Gary Gardner is out on loan.",
+        "Gary Gardner is out on loan at Nottingham Forest.",
+        "Gary Gardner is at the Championship side.",
+        "Tim Sherwood is keen to asses Gardner.",
+        "Tim Sherwood is keen to asses Gardner ahead of next season.",
+        "The midfielder would prefer a move back to Forest.",
+        "The midfielder would prefer a move back if Villa doesn't work out.",
+        "CLICK HERE for all the latest Aston Villa news."
+      ],
+      "system_claims_gpt-3.5-turbo": [
+        "Gary Gardner confirms he'll report to Aston Villa for pre-season training.",
+        "The 22-year-old is out on loan at Championship side Nottingham Forest.",
+        "Tim Sherwood is keen to assess Gardner ahead of next season.",
+        "The midfielder would prefer a move back to Forest if Villa doesn't work out.",
+        "All the latest Aston Villa news can be found by clicking here."
+      ],
+      "system_claims_distilled_t5": [
+        "Gary Gardner confirms he'll report to Aston Villa for pre-season training",
+        "The 22-year-old is out on loan at Championship side Nottingham Forest",
+        "Tim Sherwood is keen to asses Gardner ahead of next season",
+        "The midfielder would prefer a move back to Forest if Villa doesn't wok out",
+        "CLICK HERE for all the latest Aston Villa news"
+      ],
+      "system_claims_llama3_1b": [
+        "Gary Gardner will report to Aston Villa.",
+        "Aston Villa is out on loan at Nottingham Forest.",
+        "Tim Sherwood wants to assess Gary Gardner ahead of next season.",
+        "Gardner prefers a move back to Nottingham Forest if Aston Villa doesn't work out."
+      ],
+      "system_claims_llama2_7b": [],
+      "reference_acus_deduped": [
+        "Gary Gardner will report to Aston Villa for pre-season training.",
+        "Gary Gardner is 22 years old.",
+        "Gary Gardner is out on loan.",
+        "Gary Gardner is out on loan at Nottingham Forest.",
+        "Gary Gardner is at the Championship side.",
+        "Tim Sherwood is keen to asses Gardner ahead of next season.",
+        "The midfielder would prefer a move back to Forest.",
+        "The midfielder would prefer a move back if Villa doesn't work out.",
+        "CLICK HERE for all the latest Aston Villa news."
+      ]
+    },
+    {
+      "source": "For years medical experts have warned about the dangers of too much salt, but now new research is questioning conventional wisdom and warning instead of the dangers of too little salt . For years medical experts have warned about the dangers of too much salt, but new research is now questioning conventional wisdom and warning instead of the dangers of too little salt. Both federal government regulations and the American Heart Association have for decades warned that excess salt contributes to the deaths of tens of thousands of Americans each year. As the federal government prepares its influential Dietary Guidelines for 2015, some scientists are now saying that the average American salt consumption rate carries no risk. The guidelines currently dictate the people should limit their intake to 2,300 milligrams, with an even stricter 1,500 milligram limit for African Americans and people over 50. In February the  Dietary Guidelines Advisory Committee recommended keeping the larger limit, although it withdrew support for the stricter limit for African Americans and people over 50, reports The Washington Post. 'There is no longer any valid basis for the current salt guidelines,' said Andrew Mente, a professor at McMaster University in Ontario and one of the researchers involved in a major study published last year by the New England Journal of Medicine. 'So why are we still scaring people about salt?' While experts on both sides agree that eating too much salt - especially for people with high blood pressure - can be dangerous there is much disagreement over what constitutes too much. The average American ingests about 3,500 milligrams of salt per day - the amount of sodium in a teaspoon of salt - and so under the current dietary guidelines Americans are indeed endangering themselves. Even within the American Heart Association, one of the organizations promoting the current salt limits, there is disagreement with at least one former president claiming that there is no\u00a0evidence that reducing salt consumption can lower blood pressure . Salt skeptics however believe most Americans are fine. In their view, a typical healthy person can consume as much as 6,000 milligrams per day without significantly raising health risks. The skeptics also warn of the dangers of consuming too little - they say that below 3,000 milligrams also raises health risks. The PURE study published last August by the New England Journal of Medicine found that people who conform to the recommended limits (2,300 milligrams) actually have more heart trouble. They found that low sodium may stimulate the production of renin, a hormone that may have harmful effects on blood vessels. Even within the American Heart Association, one of the organizations promoting the current salt limits, there is disagreement. 'The totality of the evidence strongly suggests that Americans should be lowering their sodium intake,' said Elliott Antman, the president of the American Heart Association. 'Everyone agrees that current sodium intake is too high.' But Suzanne Oparil, a former president of the American Heart Association, told the Post that there is no evidence that\u00a0reducing salt consumption can lower blood pressure. A spokesperson for the Department of Health and Human Services has said that the federal guidelines are considering comments from the public and the advice of its science panel.",
+      "reference": "Current federal government guidelines dictate the people should limit their salt intake to 2,300 milligrams .\nScientists now believe a typical healthy person can consume as much as 6,000 milligrams per day without significantly raising health risks .\nThe same skeptics also warn of the health risks associated with consuming less than 3,000 milligrams .\nAverage American ingests about 3,500 milligrams of salt per day .",
+      "reference_acus": [
+        "Current federal goverment guidelines dictate the people.",
+        "Current federal government guidelines dictate the people about their salt intake.",
+        "The guidelines dictate the people should limit their salt intake.",
+        "People are dictated to limit their salt intake to 2,300 miligrams.",
+        "Scientists believe a typical healthy person can consume 6,000 miligrams per day.",
+        "Scientists believe a typical healthy person can consume 6,000 miligrams per day without significantly raising health risks.",
+        "The same skeptics also warn of the health risks.",
+        "The same skeptics warn the health risks associated with consuming less then 3,000 miligrams.",
+        "Average American ingests about 3,500 miligrams of salt per day."
+      ],
+      "system_claims_gpt-3.5-turbo": [
+        "Federal government guidelines dictate that people should limit their salt intake to 2,300 milligrams.",
+        "Scientists believe a typical healthy person can consume as much as 6,000 milligrams of salt per day without significantly raising health risks.",
+        "The skeptics warn of health risks associated with consuming less than 3,000 milligrams of salt.",
+        "The average American ingests about 3,500 milligrams of salt per day."
+      ],
+      "system_claims_distilled_t5": [
+        "Current federal government guidelines dictate the people should limit their salt intake to 2,300 milligrams",
+        "Scientists now believe a typical healthy person can consume as much as 6,000 milligrams per day without significantly raising health risks",
+        "The same skeptics also warn of the health risks associated with consuming less than 3,000 milligrams",
+        "Average American ingests about 3,500 milligrams of salt per day"
+      ],
+      "system_claims_llama3_1b": [
+        "Current federal government guidelines dictate that people should limit their salt intake to 2,300 milligrams.",
+        "Scientists now believe a typical healthy person can consume as much as 6,000 milligrams per day without significantly raising health risks.",
+        "The same skeptics also warn of the health risks associated with consuming less than 3,000 milligrams.",
+        "Average American ingests about 3,500 milligrams of salt per day."
+      ],
+      "system_claims_llama2_7b": [],
+      "reference_acus_deduped": [
+        "Current federal goverment guidelines dictate the people.",
+        "Current federal government guidelines dictate the people about their salt intake.",
+        "People are dictated to limit their salt intake to 2,300 miligrams.",
+        "Scientists believe a typical healthy person can consume 6,000 miligrams per day without significantly raising health risks.",
+        "The same skeptics also warn of the health risks.",
+        "The same skeptics warn the health risks associated with consuming less then 3,000 miligrams.",
+        "Average American ingests about 3,500 miligrams of salt per day."
+      ]
+    }
+  ]
+}

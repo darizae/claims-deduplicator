@@ -39,7 +39,7 @@ def deduplicate_json_file(
                 raise ValueError(f"Expected a list in field '{field_to_deduplicate}', got {type(claims)}")
 
             deduplicated_claims = deduplicate_fn(claims)
-            record[field_to_deduplicate] = deduplicated_claims
+            record[field_to_deduplicate + "_deduped"] = deduplicated_claims
             cleaned_records.append(record)
 
         cleaned_data[dataset_name] = cleaned_records  # Store cleaned data
