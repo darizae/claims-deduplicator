@@ -56,12 +56,6 @@
         "representative_claim": "Arango's team suffered a 4-3 defeat"
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 6,
-      "redundancy_ratio": 1.6666666666666667,
-      "fraction_duplicates": 0.4,
-      "unique_claims_pct": 0.6
-    },
     "deduplicated_claims": [
       "Juan Arango escaped punishment from the referee",
       "Juan Arango bit Jesus Zavela.",
@@ -70,6 +64,12 @@
       "Arango scored for his team.",
       "Arango's team suffered a 4-3 defeat"
     ],
+    "redundancy_before": {
+      "num_clusters": 6,
+      "redundancy_ratio": 1.6666666666666667,
+      "fraction_duplicates": 0.4,
+      "unique_claims_pct": 0.6
+    },
     "redundancy_after": {
       "num_clusters": 6,
       "redundancy_ratio": 1.0,
@@ -156,12 +156,6 @@
         "representative_claim": "CLICK HERE for all the latest Aston Villa news."
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 9,
-      "redundancy_ratio": 1.2222222222222223,
-      "fraction_duplicates": 0.18181818181818182,
-      "unique_claims_pct": 0.8181818181818182
-    },
     "deduplicated_claims": [
       "Gary Gardner will report to Aston Villa for pre-season training.",
       "Gary Gardner is 22 years old.",
@@ -173,6 +167,12 @@
       "The midfielder would prefer a move back if Villa doesn't work out.",
       "CLICK HERE for all the latest Aston Villa news."
     ],
+    "redundancy_before": {
+      "num_clusters": 9,
+      "redundancy_ratio": 1.2222222222222223,
+      "fraction_duplicates": 0.18181818181818182,
+      "unique_claims_pct": 0.8181818181818182
+    },
     "redundancy_after": {
       "num_clusters": 9,
       "redundancy_ratio": 1.0,
@@ -243,12 +243,6 @@
         "representative_claim": "Average American ingests about 3,500 miligrams of salt per day."
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 7,
-      "redundancy_ratio": 1.2857142857142858,
-      "fraction_duplicates": 0.2222222222222222,
-      "unique_claims_pct": 0.7777777777777778
-    },
     "deduplicated_claims": [
       "Current federal goverment guidelines dictate the people.",
       "Current federal government guidelines dictate the people about their salt intake.",
@@ -258,6 +252,12 @@
       "The same skeptics warn the health risks associated with consuming less then 3,000 miligrams.",
       "Average American ingests about 3,500 miligrams of salt per day."
     ],
+    "redundancy_before": {
+      "num_clusters": 7,
+      "redundancy_ratio": 1.2857142857142858,
+      "fraction_duplicates": 0.2222222222222222,
+      "unique_claims_pct": 0.7777777777777778
+    },
     "redundancy_after": {
       "num_clusters": 7,
       "redundancy_ratio": 1.0,
@@ -342,12 +342,6 @@
         "representative_claim": "This is Kendall's fifth time appearing in Vogue."
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 9,
-      "redundancy_ratio": 1.0,
-      "fraction_duplicates": 0.0,
-      "unique_claims_pct": 1.0
-    },
     "deduplicated_claims": [
       "The spread was shot by photographer Mario Testino.",
       "The spread stars Gigi Hadid.",
@@ -359,6 +353,12 @@
       "The spread is in Vogue.",
       "This is Kendall's fifth time appearing in Vogue."
     ],
+    "redundancy_before": {
+      "num_clusters": 9,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
     "redundancy_after": {
       "num_clusters": 9,
       "redundancy_ratio": 1.0,
@@ -407,18 +407,18 @@
         "representative_claim": "Pogba has also attracted interest from Manchester United"
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 4,
-      "redundancy_ratio": 2.0,
-      "fraction_duplicates": 0.5,
-      "unique_claims_pct": 0.5
-    },
     "deduplicated_claims": [
       "Zinedine Zidane said interest in Juventus star Paul Pogba is 'only logical'",
       "Paul Pogba has seven goals in 22 Serie A appearances",
       "Paul Pogba is 22-year-old",
       "Pogba has also attracted interest from Manchester United"
     ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 2.0,
+      "fraction_duplicates": 0.5,
+      "unique_claims_pct": 0.5
+    },
     "redundancy_after": {
       "num_clusters": 4,
       "redundancy_ratio": 1.0,
@@ -511,12 +511,6 @@
         "representative_claim": "Jonathan Pearce later laughed off the incident on air ."
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 10,
-      "redundancy_ratio": 1.0,
-      "fraction_duplicates": 0.0,
-      "unique_claims_pct": 1.0
-    },
     "deduplicated_claims": [
       "Jonathan Pearce was at the Emirates.",
       "Jonathan Pearce was commentating the Match of the Day .",
@@ -529,6 +523,12 @@
       "Jonathan Pearce took it in good spirits.",
       "Jonathan Pearce later laughed off the incident on air ."
     ],
+    "redundancy_before": {
+      "num_clusters": 10,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
     "redundancy_after": {
       "num_clusters": 10,
       "redundancy_ratio": 1.0,
@@ -558,16 +558,16 @@
         "representative_claim": "The main suspect in the most brutal massacre in recent Philippine history has gone on trial"
       }
     ],
+    "deduplicated_claims": [
+      "The main suspect in a massacre has gone on trial",
+      "The main suspect in the most brutal massacre in recent Philippine history has gone on trial"
+    ],
     "redundancy_before": {
       "num_clusters": 2,
       "redundancy_ratio": 1.5,
       "fraction_duplicates": 0.3333333333333333,
       "unique_claims_pct": 0.6666666666666666
     },
-    "deduplicated_claims": [
-      "The main suspect in a massacre has gone on trial",
-      "The main suspect in the most brutal massacre in recent Philippine history has gone on trial"
-    ],
     "redundancy_after": {
       "num_clusters": 2,
       "redundancy_ratio": 1.0,
@@ -591,15 +591,15 @@
         "representative_claim": "The government says it will increase the levy from 0.078% to 0.088%"
       }
     ],
+    "deduplicated_claims": [
+      "The government says it will increase the levy from 0.078% to 0.088%"
+    ],
     "redundancy_before": {
       "num_clusters": 1,
       "redundancy_ratio": 4.0,
       "fraction_duplicates": 0.75,
       "unique_claims_pct": 0.25
     },
-    "deduplicated_claims": [
-      "The government says it will increase the levy from 0.078% to 0.088%"
-    ],
     "redundancy_after": {
       "num_clusters": 1,
       "redundancy_ratio": 1.0,
@@ -644,18 +644,18 @@
         "representative_claim": "The controversial plans have been given the go ahead by Bolton Council."
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 4,
-      "redundancy_ratio": 1.0,
-      "fraction_duplicates": 0.0,
-      "unique_claims_pct": 1.0
-    },
     "deduplicated_claims": [
       "Footballer Gary Neville had controversial plans have been given the go ahead",
       "The controversial plans have been given the go ahead",
       "The controversial plans are for an eco-friendly \"Teletubbies\" house",
       "The controversial plans have been given the go ahead by Bolton Council."
     ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
     "redundancy_after": {
       "num_clusters": 4,
       "redundancy_ratio": 1.0,
@@ -710,12 +710,6 @@
         "representative_claim": "Frank will go out to celebrate that"
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 5,
-      "redundancy_ratio": 1.4,
-      "fraction_duplicates": 0.2857142857142857,
-      "unique_claims_pct": 0.7142857142857143
-    },
     "deduplicated_claims": [
       "Charlie's sister has passed her last university exam",
       "Charlie will go out tonight.",
@@ -723,6 +717,12 @@
       "Frank will go out tonight.",
       "Frank will go out to celebrate that"
     ],
+    "redundancy_before": {
+      "num_clusters": 5,
+      "redundancy_ratio": 1.4,
+      "fraction_duplicates": 0.2857142857142857,
+      "unique_claims_pct": 0.7142857142857143
+    },
     "redundancy_after": {
       "num_clusters": 5,
       "redundancy_ratio": 1.0,
@@ -767,18 +767,18 @@
         "representative_claim": "John hasn't heard about the Final Fantasy"
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 4,
-      "redundancy_ratio": 1.0,
-      "fraction_duplicates": 0.0,
-      "unique_claims_pct": 1.0
-    },
     "deduplicated_claims": [
       "Brett's cousin met his wife while playing a game together",
       "Andrew's favorite game is the Final Fantasy",
       "Brett hasn't heard about the Final Fantasy",
       "John hasn't heard about the Final Fantasy"
     ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.0,
+      "fraction_duplicates": 0.0,
+      "unique_claims_pct": 1.0
+    },
     "redundancy_after": {
       "num_clusters": 4,
       "redundancy_ratio": 1.0,
@@ -824,18 +824,18 @@
         "representative_claim": "The hot tea will be served with some fresh mint leaves."
       }
     ],
-    "redundancy_before": {
-      "num_clusters": 4,
-      "redundancy_ratio": 1.25,
-      "fraction_duplicates": 0.2,
-      "unique_claims_pct": 0.8
-    },
     "deduplicated_claims": [
       "Anna got an awful stomachache at night",
       "Anna doesn't know its cause.",
       "Anna's mom Joanna will make her hot tea",
       "The hot tea will be served with some fresh mint leaves."
     ],
+    "redundancy_before": {
+      "num_clusters": 4,
+      "redundancy_ratio": 1.25,
+      "fraction_duplicates": 0.2,
+      "unique_claims_pct": 0.8
+    },
     "redundancy_after": {
       "num_clusters": 4,
       "redundancy_ratio": 1.0,
