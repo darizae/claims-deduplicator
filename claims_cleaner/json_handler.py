@@ -42,7 +42,7 @@ def deduplicate_json_file(
             record[field_to_deduplicate + "_deduped"] = deduplicated_claims
             cleaned_records.append(record)
 
-        cleaned_data[dataset_name] = cleaned_records  # Store cleaned data
+        cleaned_data[dataset_name] = cleaned_records
 
     with open(output_json_path, "w") as f:
         json.dump(cleaned_data, f, indent=2)

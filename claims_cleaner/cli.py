@@ -47,6 +47,10 @@ def main():
         deduplicate_fn=deduplicate_fn
     )
 
+    print(
+        "Done deduplicating. If you want to measure redundancy, call 'measure_redundancy' in your own script or add "
+        "code here.")
+
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,6 @@
 import numpy as np
 from typing import List, Callable, Optional
-from embedding_utils import EmbeddingModel  # Adjust import per your environment
+from embedding_utils import EmbeddingModel
 
 
 def compute_embeddings(
