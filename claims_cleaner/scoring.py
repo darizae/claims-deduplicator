@@ -2,33 +2,52 @@ import numpy as np
 from typing import List, Callable, Optional
 from embedding_utils import EmbeddingModel
 
+from claims_cleaner.paths import EmbeddingCachePaths
+
 
 def compute_embeddings(
-        claims: List[str],
-        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
-        device: str = None,
-        cache_path: Optional[str] = None,
-        show_progress_bar: bool = False
+    claims: List[str],
+    model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+    device: Optional[str] = None,
+    cache_path: Optional[str] = None,
+    show_progress_bar: bool = False
 ) -> np.ndarray:
     """
-    Encodes a list of claims into embeddings using the specified model and device.
+    Encodes a list of claims into embeddings with a specified model and device,
+    ALWAYS using an on-disk cache:
+      1. Load cache if available.
+      2. Encode missing texts, store them in the in-memory cache.
+      3. Save the updated cache back to disk.
 
     :param claims: List of textual claims.
-    :param model_name: HuggingFace/SBERT model to use for embeddings.
-    :param device: 'cpu', 'cuda', 'mps', or None (auto).
-    :param cache_path: Optional path to cache embeddings or model.
-    :param show_progress_bar: Whether to show a progress bar in encoding.
-    :return: A (N, D) numpy array of embeddings, where N is len(claims).
+    :param model_name: e.g. "sentence-transformers/all-MiniLM-L6-v2".
+    :param device: 'cpu', 'cuda', 'mps', or None (auto-detect).
+    :param cache_path: Path to .pkl file used for caching. If None, we derive it from EmbeddingCachePaths.
+    :param show_progress_bar: Whether to show a progress bar while encoding.
+    :return: A numpy array of shape (len(claims), dim).
     """
     if not claims:
         return np.array([])
 
+    # 1) Determine the cache path (if none provided)
+    if cache_path is None:
+        ecp = EmbeddingCachePaths()
+        cache_path = ecp.get_cache_file_for_model(model_name)
+
+    # 2) Initialize EmbeddingModel (which loads cache automatically if it exists)
     model = EmbeddingModel(
         model_name=model_name,
         device=device,
-        cache_path=cache_path
+        cache_path=str(cache_path)
     )
-    embeddings = np.array(model.encode_texts(claims, show_progress_bar=show_progress_bar))
+
+    # 3) Encode texts (uses + updates in-memory cache)
+    embeddings_list = model.encode_texts(claims, show_progress_bar=show_progress_bar)
+    embeddings = np.array(embeddings_list)
+
+    # 4) Save the updated cache to disk *every single time*
+    model.save_cache()
+
     return embeddings
 
 

@@ -35,44 +35,47 @@ def bfs_clusters(adjacency: Dict[int, List[int]]) -> List[List[int]]:
 
 
 def cluster_claims(
-        claims: List[str],
-        threshold: float = 0.85,
-        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
-        device: str = None,
-        cache_path: Optional[str] = None
+    claims: List[str],
+    threshold: float = 0.85,
+    model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+    device: Optional[str] = None,
+    cache_path: Optional[str] = None,
+    show_progress_bar: bool = False
 ) -> List[List[int]]:
     """
-    Clusters claims by building a similarity matrix and BFS over adjacency.
-    Returns a list of clusters (each cluster is a list of claim indices).
+    Clusters claims by:
+      1) Embedding them (ALWAYS using an on-disk cache).
+      2) Building a similarity matrix.
+      3) Building an adjacency list (threshold-based).
+      4) BFS to find connected components.
+
+    Returns a list of clusters, each cluster is a list of claim indices.
 
     :param claims: List of textual claims
     :param threshold: Cosine similarity threshold for duplicates
-    :param model_name: Model to use for embeddings
+    :param model_name: e.g. "sentence-transformers/all-MiniLM-L6-v2"
     :param device: 'cpu', 'cuda', 'mps', or None
-    :param cache_path: Optional path to cache the embeddings
+    :param cache_path: If None, we auto-resolve from EmbeddingCachePaths
+    :param show_progress_bar: Show progress bar for embeddings
     :return: A list of clusters
     """
     if not claims:
         return []
 
-    # 1) Compute embeddings
-    embeddings_list = compute_embeddings(
+    # 1) ALWAYS calls compute_embeddings => always uses + saves to cache
+    embeddings = compute_embeddings(
         claims,
         model_name=model_name,
         device=device,
         cache_path=cache_path,
-        show_progress_bar=False
+        show_progress_bar=show_progress_bar
     )
-    embeddings = np.array(embeddings_list)
+
     if embeddings.size == 0:
-        return [[i] for i in range(len(claims))]  
+        return [[i] for i in range(len(claims))]
 
-    # 2) Build similarity matrix
+    # 2) Similarity matrix -> adjacency -> BFS
     sim_matrix = build_similarity_matrix(embeddings)
-
-    # 3) Build adjacency
     adjacency = build_adjacency_from_matrix(sim_matrix, threshold)
-
-    # 4) BFS to find connected components
     clusters = bfs_clusters(adjacency)
     return clusters

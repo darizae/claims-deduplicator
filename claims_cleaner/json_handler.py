@@ -15,7 +15,8 @@ def deduplicate_json_file(
         model_name: str,
         device: str = None,
         separate_clusters_path: Optional[str] = None,
-        measure_redundancy_flag: bool = True
+        measure_redundancy_flag: bool = True,
+        cache_path: Optional[str] = None
 ):
     """
     Deduplicate a JSON dataset by clustering near-duplicate claims and picking one representative
@@ -53,6 +54,7 @@ def deduplicate_json_file(
     :param separate_clusters_path: If provided, cluster-level details are written to this separate JSON.
     :param measure_redundancy_flag: Whether to measure redundancy metrics. If False, skip that step
                                     (useful to save computation time).
+    :param cache_path:
     :return: None (writes JSON to disk).
 
     **Notes**:
@@ -89,7 +91,8 @@ def deduplicate_json_file(
                 claims=claims,
                 threshold=threshold,
                 model_name=model_name,
-                device=device
+                device=device,
+                cache_path=cache_path
             )
 
             # 2) Pick representatives -> deduplicated claims

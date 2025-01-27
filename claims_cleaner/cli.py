@@ -32,6 +32,8 @@ def main():
                         help="Optional path to separate clusters JSON for qualitative analysis.")
     parser.add_argument("--measure-redundancy", action="store_true",
                         help="If set, compute redundancy metrics and store them in the clusters JSON.")
+    parser.add_argument("--cache-path", default=None,
+                        help="If provided, embeddings will be cached to this file. Otherwise, a default path is used.")
 
     args = parser.parse_args()
 
@@ -44,7 +46,8 @@ def main():
         model_name=args.model_name,
         device=args.device,
         separate_clusters_path=args.clusters_output,
-        measure_redundancy_flag=args.measure_redundancy
+        measure_redundancy_flag=args.measure_redundancy,
+        cache_path=args.cache_path
     )
 
 
