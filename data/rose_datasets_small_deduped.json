@@ -33,12 +33,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "cnndm_test_0",
-      "redundancy_before": {
-        "num_clusters": 6,
-        "redundancy_ratio": 1.6666666666666667,
-        "fraction_duplicates": 0.4,
-        "unique_claims_pct": 0.6
-      },
       "reference_acus_deduped": [
         "Juan Arango escaped punishment from the referee",
         "Juan Arango bit Jesus Zavela.",
@@ -86,12 +80,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "cnndm_test_1",
-      "redundancy_before": {
-        "num_clusters": 9,
-        "redundancy_ratio": 1.2222222222222223,
-        "fraction_duplicates": 0.18181818181818182,
-        "unique_claims_pct": 0.8181818181818182
-      },
       "reference_acus_deduped": [
         "Gary Gardner will report to Aston Villa for pre-season training.",
         "Gary Gardner is 22 years old.",
@@ -138,12 +126,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "cnndm_test_2",
-      "redundancy_before": {
-        "num_clusters": 7,
-        "redundancy_ratio": 1.2857142857142858,
-        "fraction_duplicates": 0.2222222222222222,
-        "unique_claims_pct": 0.7777777777777778
-      },
       "reference_acus_deduped": [
         "Current federal goverment guidelines dictate the people.",
         "Current federal government guidelines dictate the people about their salt intake.",
@@ -194,12 +176,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "cnndm_validation_0",
-      "redundancy_before": {
-        "num_clusters": 9,
-        "redundancy_ratio": 1.0,
-        "fraction_duplicates": 0.0,
-        "unique_claims_pct": 1.0
-      },
       "reference_acus_deduped": [
         "The spread was shot by photographer Mario Testino.",
         "The spread stars Gigi Hadid.",
@@ -242,12 +218,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "cnndm_validation_1",
-      "redundancy_before": {
-        "num_clusters": 4,
-        "redundancy_ratio": 2.0,
-        "fraction_duplicates": 0.5,
-        "unique_claims_pct": 0.5
-      },
       "reference_acus_deduped": [
         "Zinedine Zidane said interest in Juventus star Paul Pogba is 'only logical'",
         "Paul Pogba has seven goals in 22 Serie A appearances",
@@ -295,12 +265,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "cnndm_validation_2",
-      "redundancy_before": {
-        "num_clusters": 10,
-        "redundancy_ratio": 1.0,
-        "fraction_duplicates": 0.0,
-        "unique_claims_pct": 1.0
-      },
       "reference_acus_deduped": [
         "Jonathan Pearce was at the Emirates.",
         "Jonathan Pearce was commentating the Match of the Day .",
@@ -339,12 +303,6 @@
         "The main suspect in the most brutal massacre went on trial."
       ],
       "record_id": "xsum_0",
-      "redundancy_before": {
-        "num_clusters": 2,
-        "redundancy_ratio": 1.5,
-        "fraction_duplicates": 0.3333333333333333,
-        "unique_claims_pct": 0.6666666666666666
-      },
       "reference_acus_deduped": [
         "The main suspect in a massacre has gone on trial",
         "The main suspect in the most brutal massacre in recent Philippine history has gone on trial"
@@ -380,12 +338,6 @@
         "The increase will take effect from 1 January."
       ],
       "record_id": "xsum_1",
-      "redundancy_before": {
-        "num_clusters": 1,
-        "redundancy_ratio": 4.0,
-        "fraction_duplicates": 0.75,
-        "unique_claims_pct": 0.25
-      },
       "reference_acus_deduped": [
         "The government says it will increase the levy from 0.078% to 0.088%"
       ]
@@ -418,12 +370,6 @@
         "Neville's plans are for an 'Teletubbies' house."
       ],
       "record_id": "xsum_2",
-      "redundancy_before": {
-        "num_clusters": 4,
-        "redundancy_ratio": 1.0,
-        "fraction_duplicates": 0.0,
-        "unique_claims_pct": 1.0
-      },
       "reference_acus_deduped": [
         "Footballer Gary Neville had controversial plans have been given the go ahead",
         "The controversial plans have been given the go ahead",
@@ -461,12 +407,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "samsum_0",
-      "redundancy_before": {
-        "num_clusters": 5,
-        "redundancy_ratio": 1.4,
-        "fraction_duplicates": 0.2857142857142857,
-        "unique_claims_pct": 0.7142857142857143
-      },
       "reference_acus_deduped": [
         "Charlie's sister has passed her last university exam",
         "Charlie will go out tonight.",
@@ -501,12 +441,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "samsum_1",
-      "redundancy_before": {
-        "num_clusters": 4,
-        "redundancy_ratio": 1.0,
-        "fraction_duplicates": 0.0,
-        "unique_claims_pct": 1.0
-      },
       "reference_acus_deduped": [
         "Brett's cousin met his wife while playing a game together",
         "Andrew's favorite game is the Final Fantasy",
@@ -541,12 +475,6 @@
       ],
       "system_claims_llama2_7b": [],
       "record_id": "samsum_2",
-      "redundancy_before": {
-        "num_clusters": 4,
-        "redundancy_ratio": 1.25,
-        "fraction_duplicates": 0.2,
-        "unique_claims_pct": 0.8
-      },
       "reference_acus_deduped": [
         "Anna got an awful stomachache at night",
         "Anna doesn't know its cause.",

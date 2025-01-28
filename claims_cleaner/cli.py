@@ -29,8 +29,6 @@ def main():
                         help="Strategy for picking a representative claim from each cluster.")
     parser.add_argument("--device", default=None,
                         help="Device to run embeddings on: 'cpu', 'cuda', 'mps', or None (auto).")
-    parser.add_argument("--clusters-output", default=None,
-                        help="Optional path to separate clusters JSON for qualitative analysis.")
     parser.add_argument("--measure-redundancy", action="store_true",
                         help="If set, compute redundancy metrics and store them in the clusters JSON.")
     parser.add_argument("--cache-path", default=None,

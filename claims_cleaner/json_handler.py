@@ -1,11 +1,9 @@
-import json
-from typing import Callable, List, Optional, Dict
-
 import numpy as np
 
 from .clustering import cluster_claims, cluster_claims_in_record
 from .pick_representatives import pick_representatives
 from .redundancy import measure_redundancy
+from claims_cleaner.scoring import compute_embeddings
 
 import json
 from typing import Dict, List, Callable, Optional
@@ -32,7 +30,7 @@ def opt_deduplicate_json_file(
     with open(input_json_path, "r") as f:
         data = json.load(f)
 
-    # 1) Gather all claims
+    # 1) Gather all claims across datasets
     all_claims = gather_all_claims(data, field_to_deduplicate=field_to_deduplicate)
 
     # 2) Embed them once
@@ -42,7 +40,9 @@ def opt_deduplicate_json_file(
         device=device
     )
 
-    # 3) Process each record
+    # 3) Initialize clusters output
+    clusters_output = []
+
     for dataset_name, records in data.items():
         for record in records:
             record_claims = record.get(field_to_deduplicate, [])
@@ -50,32 +50,52 @@ def opt_deduplicate_json_file(
                 record[field_to_deduplicate + "_deduped"] = []
                 continue
 
-            # BFS once
-            clusters = cluster_claims_in_record(record_claims, claim2emb, threshold)
+            # 4) Cluster **before** deduplication
+            clusters_before = cluster_claims_in_record(record_claims, claim2emb, threshold)
 
-            # measure redundancy BEFORE (optional)
-            if measure_redundancy_flag:
-                redundancy_before = measure_redundancy(clusters, len(record_claims))
-                record["redundancy_before"] = redundancy_before
+            # 5) Measure redundancy **before deduplication**
+            redundancy_before = measure_redundancy(clusters_before, len(record_claims)) if measure_redundancy_flag else None
 
-            # pick a rep from each cluster
-            deduped_claims = []
-            for c_indices in clusters:
-                cluster_texts = [record_claims[i] for i in c_indices]
-                rep = representative_selector(cluster_texts)
-                deduped_claims.append(rep)
-
+            # 6) Deduplicate: Pick **one representative** per cluster
+            deduped_claims = pick_representatives(record_claims, clusters_before, representative_selector)
             record[field_to_deduplicate + "_deduped"] = deduped_claims
 
-            # BFS on deduped set if we absolutely need to measure after
-            # if do_after_bfs and measure_redundancy_flag:
-                # clusters_after = get_after_dedup_clusters(deduped_claims, claim2emb, threshold)
-                # redundancy_after = measure_redundancy(clusters_after, len(deduped_claims))
-                # record["redundancy_after"] = redundancy_after
+            # 7) Re-use adjacency list to compute **redundancy after**
+            clusters_after = cluster_claims_in_record(deduped_claims, claim2emb, threshold) if measure_redundancy_flag else []
+            redundancy_after = measure_redundancy(clusters_after, len(deduped_claims)) if measure_redundancy_flag else None
 
-    # 4) Save final JSON
-    with open(output_json_path, "w") as out_f:
-        json.dump(data, out_f, indent=2)
+            # 8) Format output of cluster analysis
+            if measure_redundancy_flag:
+                record_id = record.get("record_id", "NO_ID_PROVIDED")
+
+                cluster_details = []
+                for c_index, c_indices in enumerate(clusters_before):
+                    cluster_texts = [record_claims[i] for i in c_indices]
+                    rep_claim = deduped_claims[c_index]  # because each cluster -> 1 rep
+                    cluster_details.append({
+                        "cluster_id": c_index,
+                        "cluster_size": len(c_indices),
+                        "cluster_texts": cluster_texts,
+                        "representative_claim": rep_claim
+                    })
+
+                clusters_output.append({
+                    "dataset_name": dataset_name,
+                    "record_id": record_id,
+                    "clusters": cluster_details,
+                    "deduplicated_claims": deduped_claims,
+                    "redundancy_before": redundancy_before,
+                    "redundancy_after": redundancy_after
+                })
+
+    # 9) Write deduplicated results
+    with open(output_json_path, "w") as f:
+        json.dump(data, f, indent=2)
+
+    # 10) Write cluster analysis
+    if measure_redundancy_flag:
+        with open("data/cluster_analysis.json", "w") as f:
+            json.dump(clusters_output, f, indent=2)
 
 
 def deduplicate_json_file(
@@ -244,13 +264,11 @@ def embed_unique_claims(
     2) Embed them in one shot,
     3) Return a dict {claim_text: embedding_vector}.
     """
-    from claims_cleaner.scoring import compute_embeddings
 
     unique_claims = list(set(all_claims))  # deduplicate text
     print(f"Total claims: {len(all_claims)}; unique: {len(unique_claims)}")
 
     # EMBED everything in a single batch
-    # compute_embeddings will also handle caching automatically
     all_embeddings = compute_embeddings(
         unique_claims,
         model_name=model_name,
