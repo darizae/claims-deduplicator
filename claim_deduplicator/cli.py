@@ -1,6 +1,6 @@
 import argparse
 
-from claims_cleaner.json_handler import deduplicate_json_file
+from claim_deduplicator.json_handler import deduplicate_json_file
 from .strategies import select_longest, select_shortest, select_random
 
 STRATEGY_MAP = {
@@ -12,7 +12,7 @@ STRATEGY_MAP = {
 
 def main():
     parser = argparse.ArgumentParser(
-        description="CLI for claims-cleaner: deduplicates claims in a JSON file."
+        description="CLI for claim-deduplicator: deduplicates claims in a JSON file."
     )
     parser.add_argument("--input-json", required=True,
                         help="Path to input JSON file.")

@@ -3,7 +3,7 @@ from typing import List, Dict, Optional
 import numpy as np
 from embedding_utils import EmbeddingModel
 
-from claims_cleaner.paths import EmbeddingCachePaths
+from claim_deduplicator.paths import EmbeddingCachePaths
 
 
 def compute_embeddings(

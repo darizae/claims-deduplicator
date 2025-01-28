@@ -8,7 +8,7 @@ def main():
     timer.start()
 
     cmd = [
-        "python", "-m", "claims_cleaner.cli",
+        "python", "-m", "claim_deduplicator.cli",
         "--input-json", "data/rose_datasets.json",
         "--output-json", "data/rose_datasets_deduped.json",
         "--field-to-deduplicate", "reference_acus",
