@@ -1,16 +1,18 @@
+from collections import deque
+
 import numpy as np
-from typing import List, Callable, Optional
+from typing import List, Callable, Optional, Dict
 from embedding_utils import EmbeddingModel
 
 from claims_cleaner.paths import EmbeddingCachePaths
 
 
 def compute_embeddings(
-    claims: List[str],
-    model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
-    device: Optional[str] = None,
-    cache_path: Optional[str] = None,
-    show_progress_bar: bool = False
+        claims: List[str],
+        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+        device: Optional[str] = None,
+        cache_path: Optional[str] = None,
+        show_progress_bar: bool = False
 ) -> np.ndarray:
     """
     Encodes a list of claims into embeddings with a specified model and device,
@@ -78,6 +80,22 @@ def build_similarity_matrix(
     return sim_matrix
 
 
+def build_similarity_matrix_vectorized(embeddings: np.ndarray) -> np.ndarray:
+    """
+    Given an (N, D) array of embeddings,
+    compute the NxN cosine similarity matrix in a single step:
+        sim_matrix = (E / ||E||) dot (E / ||E||)^T
+    """
+    # 1) Normalize embeddings along axis=1
+    norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+    norms[norms == 0.0] = 1e-9  # avoid division by zero
+    normed_embs = embeddings / norms
+
+    # 2) Use matrix multiplication for pairwise dot products
+    sim_matrix = normed_embs @ normed_embs.T  # shape (N, N)
+    return sim_matrix
+
+
 def build_adjacency_from_matrix(sim_matrix: np.ndarray, threshold: float) -> dict:
     """
     Build an adjacency list (i -> list of connected j's) from a similarity matrix
@@ -90,6 +108,21 @@ def build_adjacency_from_matrix(sim_matrix: np.ndarray, threshold: float) -> dic
     n = sim_matrix.shape[0]
     adjacency = {i: [] for i in range(n)}
     for i in range(n):
+        for j in range(i + 1, n):
+            if sim_matrix[i, j] >= threshold:
+                adjacency[i].append(j)
+                adjacency[j].append(i)
+    return adjacency
+
+
+def build_adjacency_from_sim_matrix(sim_matrix: np.ndarray, threshold: float) -> Dict[int, List[int]]:
+    """
+    Construct adjacency from NxN sim_matrix, where sim_matrix[i,j] >= threshold => edge i<->j.
+    """
+    n = sim_matrix.shape[0]
+    adjacency = {i: [] for i in range(n)}
+    for i in range(n):
+        # We only need to loop j > i to avoid duplication
         for j in range(i + 1, n):
             if sim_matrix[i, j] >= threshold:
                 adjacency[i].append(j)

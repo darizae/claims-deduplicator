@@ -9,8 +9,8 @@ def main():
 
     cmd = [
         "python", "-m", "claims_cleaner.cli",
-        "--input-json", "data/rose_datasets_small.json",
-        "--output-json", "data/rose_datasets_small_deduped.json",
+        "--input-json", "data/rose_datasets.json",
+        "--output-json", "data/rose_datasets_deduped.json",
         "--field-to-deduplicate", "reference_acus",
         "--clusters-output", "data/clusters_analysis.json",
         "--measure-redundancy"

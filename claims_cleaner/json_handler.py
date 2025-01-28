@@ -1,9 +1,81 @@
 import json
-from typing import Callable, List, Optional
+from typing import Callable, List, Optional, Dict
 
-from .clustering import cluster_claims
+import numpy as np
+
+from .clustering import cluster_claims, cluster_claims_in_record
 from .pick_representatives import pick_representatives
 from .redundancy import measure_redundancy
+
+import json
+from typing import Dict, List, Callable, Optional
+
+
+def opt_deduplicate_json_file(
+        input_json_path: str,
+        output_json_path: str,
+        field_to_deduplicate: str,
+        representative_selector: Callable[[List[str]], str],
+        threshold: float,
+        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+        device: Optional[str] = None,
+        measure_redundancy_flag: bool = True,
+):
+    """
+    - Load the entire JSON.
+    - Gather all claims across records, embed them once -> claim2emb.
+    - For each record, do BFS-based clustering in local scope (fast, no re-embedding).
+    - Optionally do BFS after for deduplicated claims.
+
+    Writes out deduplicated claims to output, can also measure redundancy if flagged.
+    """
+    with open(input_json_path, "r") as f:
+        data = json.load(f)
+
+    # 1) Gather all claims
+    all_claims = gather_all_claims(data, field_to_deduplicate=field_to_deduplicate)
+
+    # 2) Embed them once
+    claim2emb = embed_unique_claims(
+        all_claims,
+        model_name=model_name,
+        device=device
+    )
+
+    # 3) Process each record
+    for dataset_name, records in data.items():
+        for record in records:
+            record_claims = record.get(field_to_deduplicate, [])
+            if not record_claims:
+                record[field_to_deduplicate + "_deduped"] = []
+                continue
+
+            # BFS once
+            clusters = cluster_claims_in_record(record_claims, claim2emb, threshold)
+
+            # measure redundancy BEFORE (optional)
+            if measure_redundancy_flag:
+                redundancy_before = measure_redundancy(clusters, len(record_claims))
+                record["redundancy_before"] = redundancy_before
+
+            # pick a rep from each cluster
+            deduped_claims = []
+            for c_indices in clusters:
+                cluster_texts = [record_claims[i] for i in c_indices]
+                rep = representative_selector(cluster_texts)
+                deduped_claims.append(rep)
+
+            record[field_to_deduplicate + "_deduped"] = deduped_claims
+
+            # BFS on deduped set if we absolutely need to measure after
+            # if do_after_bfs and measure_redundancy_flag:
+                # clusters_after = get_after_dedup_clusters(deduped_claims, claim2emb, threshold)
+                # redundancy_after = measure_redundancy(clusters_after, len(deduped_claims))
+                # record["redundancy_after"] = redundancy_after
+
+    # 4) Save final JSON
+    with open(output_json_path, "w") as out_f:
+        json.dump(data, out_f, indent=2)
 
 
 def deduplicate_json_file(
@@ -142,3 +214,53 @@ def deduplicate_json_file(
     if separate_clusters_path is not None:
         with open(separate_clusters_path, "w") as f:
             json.dump(clusters_output, f, indent=2)
+
+
+def gather_all_claims(data: Dict[str, List[Dict]], field_to_deduplicate: str) -> List[str]:
+    """
+    Collects all claims from the given JSON structure.
+    data = {
+      "dataset_name": [ {record}, {record}, ... ],
+      ...
+    }
+    Returns a list of (possibly duplicated) claim strings.
+    """
+    all_claims = []
+    for dataset_name, records in data.items():
+        for record in records:
+            claims = record.get(field_to_deduplicate, [])
+            all_claims.extend(claims)
+    return all_claims
+
+
+def embed_unique_claims(
+    all_claims: List[str],
+    model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+    device: str = None
+) -> Dict[str, np.ndarray]:
+    """
+    Given a big list of claims (with duplicates),
+    1) Convert to a set of unique claims,
+    2) Embed them in one shot,
+    3) Return a dict {claim_text: embedding_vector}.
+    """
+    from claims_cleaner.scoring import compute_embeddings
+
+    unique_claims = list(set(all_claims))  # deduplicate text
+    print(f"Total claims: {len(all_claims)}; unique: {len(unique_claims)}")
+
+    # EMBED everything in a single batch
+    # compute_embeddings will also handle caching automatically
+    all_embeddings = compute_embeddings(
+        unique_claims,
+        model_name=model_name,
+        device=device,
+        show_progress_bar=True
+    )
+
+    # Build the dictionary
+    claim2emb = {}
+    for text, emb in zip(unique_claims, all_embeddings):
+        claim2emb[text] = emb
+
+    return claim2emb

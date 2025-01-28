@@ -1,6 +1,7 @@
 import argparse
 
 from claims_cleaner import deduplicate_json_file
+from claims_cleaner.json_handler import opt_deduplicate_json_file
 from .strategies import select_longest, select_shortest, select_random
 
 STRATEGY_MAP = {
@@ -37,7 +38,7 @@ def main():
 
     args = parser.parse_args()
 
-    deduplicate_json_file(
+    opt_deduplicate_json_file(
         input_json_path=args.input_json,
         output_json_path=args.output_json,
         field_to_deduplicate=args.field_to_deduplicate,
@@ -45,9 +46,7 @@ def main():
         threshold=args.threshold,
         model_name=args.model_name,
         device=args.device,
-        separate_clusters_path=args.clusters_output,
         measure_redundancy_flag=args.measure_redundancy,
-        cache_path=args.cache_path
     )
 
 
