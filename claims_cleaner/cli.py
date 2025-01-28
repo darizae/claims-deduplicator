@@ -1,7 +1,6 @@
 import argparse
 
-from claims_cleaner import deduplicate_json_file
-from claims_cleaner.json_handler import opt_deduplicate_json_file
+from claims_cleaner.json_handler import deduplicate_json_file
 from .strategies import select_longest, select_shortest, select_random
 
 STRATEGY_MAP = {
@@ -36,7 +35,7 @@ def main():
 
     args = parser.parse_args()
 
-    opt_deduplicate_json_file(
+    deduplicate_json_file(
         input_json_path=args.input_json,
         output_json_path=args.output_json,
         field_to_deduplicate=args.field_to_deduplicate,
