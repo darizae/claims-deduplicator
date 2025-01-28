@@ -1,1 +1,1 @@
-# claims-cleaner
+# claims-deduplicator
