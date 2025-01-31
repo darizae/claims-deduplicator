@@ -1,0 +1,54 @@
+[build-system]
+requires = [
+  "setuptools>=63.0.0",
+  "wheel",
+  "build",
+  "twine"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claims-deduplicator"
+version = "0.1.0"
+description = "A Python package for deduplicating textual claims, clustering them, and measuring redundancy."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Daniel Ariza", email = "danielarizae@gmail.com" }
+]
+maintainers = []
+keywords = [
+  "nlp",
+  "deduplication",
+  "sentence-embeddings",
+  "text-clustering",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+]
+requires-python = ">=3.10"
+
+dependencies = [
+  "numpy>=1.20",
+  "torch>=2.0",
+  "sentence-transformers>=2.7.0",
+  "embedding-utils>=0.1.4",
+  "tqdm>=4.0",
+  "my-timer-daniel>=0.1.1"
+]
+
+[project.urls]
+homepage = "https://github.com/darizae/claims-deduplicator"
+issues = "https://github.com/darizae/claims-deduplicator/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["claim_deduplicator*"]
+exclude = ["tests*"]
+
+[project.entry-points."console_scripts"]
+claims-deduplicator = "claim_deduplicator.cli:main"

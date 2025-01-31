@@ -1,4 +1,4 @@
-name: py310env
+name: claimDedup
 channels:
   - conda-forge
 dependencies:
@@ -76,4 +76,4 @@ dependencies:
       - typing-extensions==4.12.2
       - urllib3==2.3.0
       - zipp==3.21.0
-prefix: /opt/homebrew/Caskroom/miniforge/base/envs/py310env
+prefix: /opt/homebrew/Caskroom/miniforge/base/envs/claimDedup
