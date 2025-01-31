@@ -17,7 +17,8 @@ This repo provides:
    - [Using as a Python Library](#using-as-a-python-library)
    - [Using the CLI](#using-the-cli)
 4. [Example Code Snippet](#example-code-snippet)
-5. [Multi-Threshold Deduplication](#multi-threshold-deduplication)
+5. [Under the Hood: Vectorized Cosine Similarity](#under-the-hood-vectorized-cosine-similarity)
+6. [Multi-Threshold Deduplication](#multi-threshold-deduplication)
 7. [Contributing](#contributing)
 8. [License](#license)
 
@@ -138,6 +139,46 @@ Redundancy stats: {...}
 
 ---
 
+Here is the text formatted in Markdown, ready to be copied and pasted into a README file:
+
+## Under the Hood: Vectorized Cosine Similarity
+
+We **vectorize** the entire process:
+
+```python
+def build_similarity_matrix_vectorized(embeddings: np.ndarray) -> np.ndarray:
+    """
+    Given an (N, D) array of embeddings,
+    compute the NxN cosine similarity matrix in a single step:
+        sim_matrix = (E / ||E||) dot (E / ||E||)^T
+    """
+    norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+    norms[norms == 0.0] = 1e-9  
+    normed_embs = embeddings / norms
+
+    sim_matrix = normed_embs @ normed_embs.T
+    return sim_matrix
+```
+
+### Mathematical Basis
+
+For two vectors \( \mathbf{v}_1 \) and \( \mathbf{v}_2 \), the cosine similarity is:
+
+\[
+\text{cosine\_similarity}(\mathbf{v}_1, \mathbf{v}_2) = \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\| \|\mathbf{v}_2\|}
+\]
+
+where \( \mathbf{v}_1 \cdot \mathbf{v}_2 \) is the dot product, and \( \|\mathbf{v}_1\|, \|\mathbf{v}_2\| \) are the L2 (Euclidean) norms.
+
+- **Old method:** Iterated pairwise over every pair of vectors \( (O(N^2 \times D)) \) with explicit loops, which is slow.
+- **New approach:** Normalize rows of \( E \), then multiply \( (E / \|E\|) \) by its transpose to get all pairwise similarities in a single matrix multiplication:
+
+\[
+S = \left(\frac{E}{\|E\|}\right) \cdot \left(\frac{E}{\|E\|}\right)^T
+\]
+
+---
+
 ## Multi-Threshold Deduplication
 
 If you want to compare results at different thresholds without re-computing all embeddings multiple times, use `multi_threshold_deduplicate`:
@@ -174,3 +215,4 @@ Contributions, issues, and feature requests are welcome! Feel free to open an is
 
 This project is licensed under the [MIT License](./LICENSE).  
 You’re free to modify and distribute it as per the license terms.
+
