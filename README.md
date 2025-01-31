@@ -19,8 +19,7 @@ This repo provides:
 4. [Example Code Snippet](#example-code-snippet)
 5. [Under the Hood: Vectorized Cosine Similarity](#under-the-hood-vectorized-cosine-similarity)
 6. [Multi-Threshold Deduplication](#multi-threshold-deduplication)
-7. [Contributing](#contributing)
-8. [License](#license)
+7. [License](#license)
 
 ---
 
@@ -199,15 +198,6 @@ multi_threshold_deduplicate(
 ```
 
 This will produce additional fields like `deduped_0.7_longest`, `deduped_0.8_longest`, etc., in each record.
-
----
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to open an issue or pull request. Please make sure to:
-1. Fork the repo and create a new branch for each feature or fix.
-2. Write or update tests if needed.
-3. Submit a Pull Request describing your changes clearly.
 
 ---
 
