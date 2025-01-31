@@ -1,14 +1,13 @@
 # claims-deduplicator
 
-A Python package that **deduplicates textual claims** using sentence embeddings and clustering. It identifies near-duplicate claims by computing embeddings (with caching), building a similarity matrix, and forming clusters above a configurable threshold. Then, it selects a single representative per cluster to remove redundancy.  
+[![Python 3.10](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
+[![PyTorch 2.5.1](https://img.shields.io/badge/PyTorch-2.5.1-orange.svg)](https://pytorch.org/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![Project Status - Alpha](https://img.shields.io/badge/Status-Alpha-yellow.svg)](#)
+[![Code Style](https://img.shields.io/badge/Code%20Style-PEP8-green.svg)](https://www.python.org/dev/peps/pep-0008/)
 
-This repo provides:
-- **Library functions** to deduplicate lists or entire record sets of claims
-- **A command-line interface (CLI)** for file-based deduplication
-- **Optional multi-threshold pipelines** for comparing results at multiple similarity thresholds
-- **Redundancy metrics** to quantify how many duplicates were removed
-
----
+This repository provides a Python package and CLI tool for **deduplicating textual claims** via sentence embeddings, BFS-based clustering, and representative selection.
+  
 
 ## Table of Contents
 1. [Key Features](#key-features)
@@ -119,6 +118,21 @@ claims-deduplicator \
 ```
 
 Now each record will get a new key named `reference_acus_deduped` containing deduplicated claims.
+
+Below is a quick overview of the CLI arguments supported.
+
+### CLI Parameters
+
+| Parameter               | Description                                                                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------|
+| `--input-json`          | Path to the input JSON file.                                                                             |
+| `--output-json`         | Path to the output JSON file with deduplicated results.                                                  |
+| `--field-to-deduplicate`| Field name (within each record) containing the list of textual claims.                                   |
+| `--threshold`           | Cosine similarity threshold (0–1). Claims above this similarity are considered duplicates.               |
+| `--model-name`          | Model name for sentence embeddings (e.g., `sentence-transformers/all-MiniLM-L6-v2`).                     |
+| `--device`              | Compute device: `"cpu"`, `"cuda"`, `"mps"`, or None (auto-detect).                                       |
+| `--strategy`            | Representative selection strategy: `"longest"`, `"shortest"`, `"random"`.                                |
+| `--measure-redundancy`  | If set, computes redundancy metrics (before/after).                                                      |
 
 ---
 
