@@ -53,31 +53,34 @@ def compute_embeddings(
 
 
 def embed_unique_claims(
-        all_claims: List[str],
-        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
-        device: str = None
+    all_claims: List[str],
+    model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+    device: Optional[str] = None,
+    show_progress_bar: bool = False
 ) -> Dict[str, np.ndarray]:
     """
-    Given a big list of claims (with duplicates),
-    1) Convert to a set of unique claims,
-    2) Embed them in one shot,
-    3) Return a dict {claim_text: embedding_vector}.
+    1) deduplicate textual claims to get unique
+    2) embed them using EmbeddingModel w/ caching
+    3) build {claim: embedding}
     """
+    if not all_claims:
+        return {}
 
-    unique_claims = list(set(all_claims))  # deduplicate text
-    print(f"Total claims: {len(all_claims)}; unique: {len(unique_claims)}")
+    unique_claims = list(set(all_claims))
+    model_cache_path = EmbeddingCachePaths().get_cache_file_for_model(model_name)
 
-    # EMBED everything in a single batch
-    all_embeddings = compute_embeddings(
-        unique_claims,
+    # Embedding model with on-disk cache
+    model = EmbeddingModel(
         model_name=model_name,
         device=device,
-        show_progress_bar=True
+        cache_path=str(model_cache_path)
     )
 
-    # Build the dictionary
+    embeddings_array = model.encode_texts(unique_claims, show_progress_bar=show_progress_bar)
+    model.save_cache()
+
     claim2emb = {}
-    for text, emb in zip(unique_claims, all_embeddings):
-        claim2emb[text] = emb
+    for txt, emb in zip(unique_claims, embeddings_array):
+        claim2emb[txt] = emb
 
     return claim2emb
