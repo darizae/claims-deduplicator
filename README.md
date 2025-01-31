@@ -161,20 +161,26 @@ def build_similarity_matrix_vectorized(embeddings: np.ndarray) -> np.ndarray:
 
 ### Mathematical Basis
 
-For two vectors \( \mathbf{v}_1 \) and \( \mathbf{v}_2 \), the cosine similarity is:
+For two vectors $\mathbf{v}_1$ and $\mathbf{v}_2$, the cosine similarity is:
 
-\[
-\text{cosine\_similarity}(\mathbf{v}_1, \mathbf{v}_2) = \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\| \|\mathbf{v}_2\|}
-\]
+$$
+\text{cosine\_similarity}(\mathbf{v}_1, \mathbf{v}_2) 
+= \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\|\,\|\mathbf{v}_2\|}
+$$
 
-where \( \mathbf{v}_1 \cdot \mathbf{v}_2 \) is the dot product, and \( \|\mathbf{v}_1\|, \|\mathbf{v}_2\| \) are the L2 (Euclidean) norms.
+where $\mathbf{v}_1 \cdot \mathbf{v}_2$ is the dot product, and 
+$\|\mathbf{v}_1\|, \|\mathbf{v}_2\|$ are the L2 (Euclidean) norms.
 
-- **Old method:** Iterated pairwise over every pair of vectors \( (O(N^2 \times D)) \) with explicit loops, which is slow.
-- **New approach:** Normalize rows of \( E \), then multiply \( (E / \|E\|) \) by its transpose to get all pairwise similarities in a single matrix multiplication:
+- **Old method**: Iterated pairwise over every pair of vectors 
+  $O(N^2 \times D)$ with explicit loops, which is slow.
+- **New approach**: Normalize rows of $E$, then multiply $(E / \|E\|)$ by its transpose 
+  to get all pairwise similarities in a single matrix multiplication:
 
-\[
-S = \left(\frac{E}{\|E\|}\right) \cdot \left(\frac{E}{\|E\|}\right)^T
-\]
+$$
+S = \left(\frac{E}{\|E\|}\right)
+    \cdot 
+    \left(\frac{E}{\|E\|}\right)^T
+$$
 
 ---
 
