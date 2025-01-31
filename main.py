@@ -9,8 +9,8 @@ def main():
 
     cmd = [
         "python", "-m", "claim_deduplicator.cli",
-        "--input-json", "data/rose_datasets.json",
-        "--output-json", "data/rose_datasets_deduped.json",
+        "--input-json", "data/example_dataset.json",
+        "--output-json", "data/example_dataset_deduped.json",
         "--field-to-deduplicate", "reference_acus",
         "--measure-redundancy"
     ]
