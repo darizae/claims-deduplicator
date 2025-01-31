@@ -175,26 +175,28 @@ def build_similarity_matrix_vectorized(embeddings: np.ndarray) -> np.ndarray:
 
 ### Mathematical Basis
 
-For two vectors $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, the cosine similarity is:
+For two vectors $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, the **cosine similarity** is defined as:
 
 $$
-\operatorname{cosine\_similarity}(\mathbf{v}_{1}, \mathbf{v}_{2})
-= \frac{\mathbf{v}_{1} \cdot \mathbf{v}_{2}}{\|\mathbf{v}_{1}\|\,\|\mathbf{v}_{2}\|}
+\operatorname{cosSim}(\mathbf{v}_{1}, \mathbf{v}_{2})
+= \frac{\mathbf{v}_{1} \cdot \mathbf{v}_{2}}{\|\mathbf{v}_{1}\|\;\|\mathbf{v}_{2}\|}
 $$
 
 where $\mathbf{v}_{1} \cdot \mathbf{v}_{2}$ is the dot product, and 
-$\|\mathbf{v}_{1}\|, \|\mathbf{v}_{2}\|$ are the L2 (Euclidean) norms.
+$\|\mathbf{v}_{1}\|, \|\mathbf{v}_{2}\|$ are L2 (Euclidean) norms.
 
-- **Old method**: Iterated pairwise over every pair of vectors 
-  $O\bigl(N^{2} \times D\bigr)$ with explicit loops (very slow).
-- **New approach**: Normalize rows of $E$, then multiply $\bigl(E / \|E\|\bigr)$ by its transpose 
-  to get all pairwise similarities via a single matrix multiplication:
+- **Old method**: Performed a pairwise loop over every pair of vectors, 
+  incurring \(\,O(N^2 \times D)\,\) complexity, which can be slow for large sets.
+
+- **New approach**: We **normalize** each row of \(E\), then compute:
 
 $$
-S = \biggl(\frac{E}{\|E\|}\biggr)
-    \cdot 
-    \biggl(\frac{E}{\|E\|}\biggr)^{T}
+S 
+= \bigl(\tfrac{E}{\|E\|}\bigr)\;
+  \bigl(\tfrac{E}{\|E\|}\bigr)^{T}
 $$
+
+to get **all pairwise similarities** in a single matrix multiplication step.
 
 ---
 
