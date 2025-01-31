@@ -200,6 +200,19 @@ to get **all pairwise similarities** in a single matrix multiplication step.
 
 ---
 
+### Notes on RoSE Dataset Integration
+
+This package has been particularly useful in deduplicating “reference ACUs” (Atomic Content Units) from the [**ROSE dataset**](https://github.com/Yale-LILY/ROSE). In ROSE, multiple human-written references can be repetitive or near-duplicates, so performing this claim-based clustering/deduplication:
+
+1. **Reduces redundancy** in the reference sets.
+2. **Organizes** similar human-written units into coherent clusters.
+3. **Streamlines** the data for downstream tasks or evaluations (e.g., summarization research).
+
+In short, if you have a dataset (like RoSE) with numerous overlapping or near-duplicate human reference texts, running the **claims-deduplicator** pipeline can help produce a cleaner, more concise reference set.
+
+
+---
+
 ## Multi-Threshold Deduplication
 
 If you want to compare results at different thresholds without re-computing all embeddings multiple times, use `multi_threshold_deduplicate`:
