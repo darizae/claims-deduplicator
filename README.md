@@ -175,25 +175,25 @@ def build_similarity_matrix_vectorized(embeddings: np.ndarray) -> np.ndarray:
 
 ### Mathematical Basis
 
-For two vectors $\mathbf{v}_1$ and $\mathbf{v}_2$, the cosine similarity is:
+For two vectors $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, the cosine similarity is:
 
 $$
-\text{cosine\_similarity}(\mathbf{v}_1, \mathbf{v}_2) 
-= \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\|\,\|\mathbf{v}_2\|}
+\operatorname{cosine\_similarity}(\mathbf{v}_{1}, \mathbf{v}_{2})
+= \frac{\mathbf{v}_{1} \cdot \mathbf{v}_{2}}{\|\mathbf{v}_{1}\|\,\|\mathbf{v}_{2}\|}
 $$
 
-where $\mathbf{v}_1 \cdot \mathbf{v}_2$ is the dot product, and 
-$\|\mathbf{v}_1\|, \|\mathbf{v}_2\|$ are the L2 (Euclidean) norms.
+where $\mathbf{v}_{1} \cdot \mathbf{v}_{2}$ is the dot product, and 
+$\|\mathbf{v}_{1}\|, \|\mathbf{v}_{2}\|$ are the L2 (Euclidean) norms.
 
 - **Old method**: Iterated pairwise over every pair of vectors 
-  $O(N^2 \times D)$ with explicit loops, which is slow.
-- **New approach**: Normalize rows of $E$, then multiply $(E / \|E\|)$ by its transpose 
-  to get all pairwise similarities in a single matrix multiplication:
+  $O\bigl(N^{2} \times D\bigr)$ with explicit loops (very slow).
+- **New approach**: Normalize rows of $E$, then multiply $\bigl(E / \|E\|\bigr)$ by its transpose 
+  to get all pairwise similarities via a single matrix multiplication:
 
 $$
-S = \left(\frac{E}{\|E\|}\right)
+S = \biggl(\frac{E}{\|E\|}\biggr)
     \cdot 
-    \left(\frac{E}{\|E\|}\right)^T
+    \biggl(\frac{E}{\|E\|}\biggr)^{T}
 $$
 
 ---
