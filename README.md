@@ -175,18 +175,16 @@ def build_similarity_matrix_vectorized(embeddings: np.ndarray) -> np.ndarray:
 
 ### Mathematical Basis
 
-For two vectors $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, the **cosine similarity** is defined as:
+For two vectors $$(\mathbf{v}_1)$$ and $$(\mathbf{v}_2)$$, 
+the **cosine similarity** is defined as:
 
 $$
-\operatorname{cosSim}(\mathbf{v}_{1}, \mathbf{v}_{2})
-= \frac{\mathbf{v}_{1} \cdot \mathbf{v}_{2}}{\|\mathbf{v}_{1}\|\;\|\mathbf{v}_{2}\|}
+\cos(\mathbf{v}_1, \mathbf{v}_2) 
+= \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\|\|\mathbf{v}_2\|}
 $$
-
-where $\mathbf{v}_{1} \cdot \mathbf{v}_{2}$ is the dot product, and 
-$\|\mathbf{v}_{1}\|, \|\mathbf{v}_{2}\|$ are L2 (Euclidean) norms.
 
 - **Old method**: Performed a pairwise loop over every pair of vectors, 
-  incurring \(\,O(N^2 \times D)\,\) complexity, which can be slow for large sets.
+  incurring $$(O(N^2 \times D))$$ complexity, which can be slow for large sets.
 
 - **New approach**: We **normalize** each row of \(E\), then compute:
 
