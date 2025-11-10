@@ -216,8 +216,8 @@ In short, if you have a dataset (like RoSE) with numerous overlapping or near-du
 If you want to compare results at different thresholds without re-computing all embeddings multiple times, use `multi_threshold_deduplicate`:
 
 ```python
-from claim_deduplicator.multi_threshold_deduplicate import multi_threshold_deduplicate
-from claim_deduplicator.strategies import select_longest
+from claim_deduplicator import multi_threshold_deduplicate
+from claim_deduplicator.clustering.strategies import select_longest
 
 multi_threshold_deduplicate(
     input_json_path="data/example_dataset.json",

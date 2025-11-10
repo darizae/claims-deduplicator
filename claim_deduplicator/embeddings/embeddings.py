@@ -30,23 +30,19 @@ def compute_embeddings(
     if not claims:
         return np.array([])
 
-    # 1) Determine the cache path (if none provided)
     if cache_path is None:
         ecp = EmbeddingCachePaths()
         cache_path = ecp.get_cache_file_for_model(model_name)
 
-    # 2) Initialize EmbeddingModel (which loads cache automatically if it exists)
     model = EmbeddingModel(
         model_name=model_name,
         device=device,
         cache_path=str(cache_path)
     )
 
-    # 3) Encode texts (uses + updates in-memory cache)
     embeddings_list = model.encode_texts(claims, show_progress_bar=show_progress_bar)
     embeddings = np.array(embeddings_list)
 
-    # 4) Save the updated cache to disk *every single time*
     model.save_cache()
 
     return embeddings
@@ -69,7 +65,6 @@ def embed_unique_claims(
     unique_claims = list(set(all_claims))
     model_cache_path = EmbeddingCachePaths().get_cache_file_for_model(model_name)
 
-    # Embedding model with on-disk cache
     model = EmbeddingModel(
         model_name=model_name,
         device=device,

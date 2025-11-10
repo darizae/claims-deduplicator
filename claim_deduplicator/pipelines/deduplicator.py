@@ -1,9 +1,9 @@
 from typing import List, Dict, Any, Optional, Tuple
 
-from .embeddings import embed_unique_claims
-from .clustering import cluster_claims_in_record
-from .pick_representatives import pick_representatives
-from .redundancy import measure_redundancy
+from ..embeddings.embeddings import embed_unique_claims
+from ..clustering.clustering import cluster_claims_in_record
+from ..clustering.pick_representatives import pick_representatives
+from ..clustering.redundancy import measure_redundancy
 
 
 def deduplicate_claims(
@@ -37,38 +37,30 @@ def deduplicate_claims(
     if not claims:
         return [], {}
 
-    # 1) Embed unique claims
     claim2emb = embed_unique_claims(
         all_claims=claims,
         model_name=model_name,
         device=device
     )
 
-    # 2) Since we have a single "record," just cluster them once:
     clusters = cluster_claims_in_record(
         record_claims=claims,
         claim2emb=claim2emb,
         threshold=threshold
     )
 
-    # 3) Measure redundancy before (optional)
     redundancy_before = None
     if measure_redundancy_flag:
         redundancy_before = measure_redundancy(clusters, len(claims))
 
-    # 4) Pick representatives
     deduped_claims = pick_representatives(claims, clusters, representative_selector)
 
-    # 5) Optionally measure redundancy after
     redundancy_after = None
     if measure_redundancy_flag and deduped_claims:
-        # cluster the deduped claims
-        # Re-embed the deduped claims (or reuse claim2emb, but let's keep it consistent)
         claim2emb_deduped = embed_unique_claims(deduped_claims, model_name, device)
         clusters_after = cluster_claims_in_record(deduped_claims, claim2emb_deduped, threshold)
         redundancy_after = measure_redundancy(clusters_after, len(deduped_claims))
 
-    # Prepare the optional redundancy info
     if measure_redundancy_flag:
         return deduped_claims, {
             "redundancy_before": redundancy_before,
@@ -108,16 +100,14 @@ def deduplicate_records(
         from .strategies import select_longest
         representative_selector = select_longest
 
-    # Gather all claims from all records to embed them once
     all_claims = []
     for rec in records:
         claims_in_rec = rec.get(field_to_deduplicate, [])
         all_claims.extend(claims_in_rec)
 
-    # Global embedding
     claim2emb = embed_unique_claims(all_claims, model_name, device)
 
-    clusters_output = []  # For analysis if measure_redundancy_flag is True
+    clusters_output = []
 
     for record in records:
         claims = record.get(field_to_deduplicate, [])
@@ -125,19 +115,15 @@ def deduplicate_records(
             record[field_to_deduplicate + "_deduped"] = []
             continue
 
-        # 1) Cluster
         clusters_before = cluster_claims_in_record(claims, claim2emb, threshold)
 
-        # 2) Redundancy before
         red_before = None
         if measure_redundancy_flag:
             red_before = measure_redundancy(clusters_before, len(claims))
 
-        # 3) Deduplicate (pick reps)
         deduped_claims = pick_representatives(claims, clusters_before, representative_selector)
         record[field_to_deduplicate + "_deduped"] = deduped_claims
 
-        # 4) If measuring redundancy, cluster after dedup + measure
         if measure_redundancy_flag:
             if deduped_claims:
                 # Embeddings for deduped claims
@@ -148,7 +134,6 @@ def deduplicate_records(
                 clusters_after = []
                 red_after = None
 
-            # Store analysis data
             record_id = record.get("record_id", "NO_RECORD_ID")
             clusters_output.append({
                 "record_id": record_id,
@@ -194,19 +179,15 @@ def deduplicate_multiple_claim_sets(
         from .strategies import select_longest
         representative_selector = select_longest
 
-    # 1) Gather all claims from *all* sub-lists
     all_claims = []
     for claims in list_of_claim_lists:
         all_claims.extend(claims)
 
-    # 2) Embed them once
     claim2emb = embed_unique_claims(all_claims, model_name=model_name, device=device)
 
-    # We'll store results in parallel arrays
     deduplicated_claim_sets = []
     analysis_info_list = []
 
-    # 3) For each sub-list, cluster & deduplicate using the precomputed embeddings
     for i, claims in enumerate(list_of_claim_lists):
         if not claims:
             deduplicated_claim_sets.append([])
@@ -214,21 +195,15 @@ def deduplicate_multiple_claim_sets(
                 analysis_info_list.append({"index": i, "redundancy_before": None, "redundancy_after": None})
             continue
 
-        # 3a) BFS-based clustering
         clusters_before = cluster_claims_in_record(claims, claim2emb, threshold)
 
-        # 3b) measure redundancy before
         redundancy_before = measure_redundancy(clusters_before, len(claims)) if measure_redundancy_flag else None
 
-        # 3c) pick representatives
         deduped_claims = pick_representatives(claims, clusters_before, representative_selector)
         deduplicated_claim_sets.append(deduped_claims)
 
-        # 3d) measure redundancy after
         redundancy_after = None
         if measure_redundancy_flag and deduped_claims:
-            # We can do a second BFS on the deduplicated set
-            # embedding is still the same, but let's filter claim2emb
             deduped2emb = {c: claim2emb[c] for c in deduped_claims}
             clusters_after = cluster_claims_in_record(deduped_claims, deduped2emb, threshold)
             redundancy_after = measure_redundancy(clusters_after, len(deduped_claims))

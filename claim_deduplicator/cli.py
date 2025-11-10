@@ -1,7 +1,7 @@
 import argparse
 
-from claim_deduplicator.file_pipeline import deduplicate_json_file
-from .strategies import select_longest, select_shortest, select_random
+from .pipelines.file_pipeline import deduplicate_json_file
+from .clustering.strategies import select_longest, select_shortest, select_random
 
 STRATEGY_MAP = {
     "longest": select_longest,

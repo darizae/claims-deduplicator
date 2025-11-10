@@ -47,13 +47,10 @@ def cluster_claims_in_record(
     if not record_claims:
         return []
 
-    # 1) Gather embeddings for the record's claims in order
     embs = np.array([claim2emb[txt] for txt in record_claims])
 
-    # 2) Vectorized similarity
     sim_matrix = build_similarity_matrix_vectorized(embs)
 
-    # 3) Adjacency + BFS
     adjacency = build_adjacency_from_sim_matrix(sim_matrix, threshold)
     clusters = bfs_clusters(adjacency)
 

@@ -3,12 +3,14 @@ import os
 from typing import List, Dict, Callable, Optional
 import numpy as np
 
-# Reuse your existing logic
-from .embeddings import compute_embeddings
-from .scoring import build_similarity_matrix_vectorized, build_adjacency_from_sim_matrix
-from .clustering import bfs_clusters
-from .pick_representatives import pick_representatives
-from .redundancy import measure_redundancy
+from ..embeddings.embeddings import compute_embeddings
+from ..clustering.scoring import (
+    build_similarity_matrix_vectorized,
+    build_adjacency_from_sim_matrix,
+)
+from ..clustering.clustering import bfs_clusters
+from ..clustering.pick_representatives import pick_representatives
+from ..clustering.redundancy import measure_redundancy
 
 
 def load_json(path: str) -> Dict:
