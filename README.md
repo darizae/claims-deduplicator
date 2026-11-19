@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand/claims-deduplicator-mark.svg" width="620" alt="Related claims clustering into one representative claim">
+</p>
+
 # claims-deduplicator
 
 [![Python 3.10](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
