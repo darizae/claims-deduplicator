@@ -239,3 +239,6 @@ This will produce additional fields like `deduped_0.7_longest`, `deduped_0.8_lon
 This project is licensed under the [MIT License](./LICENSE).  
 You’re free to modify and distribute it as per the license terms.
 
+## Agent-assisted setup
+
+[Open the agent setup page](https://darizae.github.io/claims-deduplicator/) or [copy the plain-text prompt](docs/agent-setup.txt) into your coding agent. Review its proposed changes and verification results.
